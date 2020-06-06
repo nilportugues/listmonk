@@ -1,0 +1,170 @@
+/* Import Bulma to set variables */
+@import "~bulma/sass/utilities/_all";
+
+$body-family: "IBM Plex Sans", "Helvetica Neue", sans-serif;
+$body-size: 15px;
+$primary: #7f2aff;
+$link: $primary;
+$input-placeholder-color: $black-ter;
+
+$sidebar-box-shadow: none;
+$sidebar-width: 240px;
+$menu-item-active-background-color: $white-bis;
+$menu-item-active-color: $primary;
+
+/* Buefy */
+$modal-background-background-color: rgba(0, 0, 0, .30);
+$speed-slow: 25ms !default;
+$speed-slower: 50ms !default;
+
+/* Import full Bulma and Buefy to override styles. */
+@import "~bulma";
+@import "~buefy/src/scss/buefy";
+
+
+html, body {
+  height: 100%;
+}
+
+ul.no {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Two column sidebar+body layout */
+#app {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  
+  > .sidebar {
+    flex-shrink: 1;
+    box-shadow: 0 0 5px #eee;
+    border-right: 1px solid #eee;
+  }
+  > .content {
+    margin: 30px 30px 30px 30px;
+    flex-grow: 1;
+  }
+}
+
+.b-sidebar {
+  .sidebar-content {
+    border-right: 1px solid #eee;
+    padding: 15px;
+  }
+  .sidebar-content .menu-list > li {
+    margin-bottom: 15px;
+  }
+  .logo {
+    margin-bottom: 30px;
+  }  
+}
+
+/* Table colors and padding */
+.content table {
+  thead th {
+    background: $white-bis;
+    border-bottom: 1px solid $grey-lighter;
+  }
+  thead th, tbody td {
+    padding: 10px;
+  }
+  .actions a {
+    margin: 0 10px;
+    display: inline-block;
+  }
+}
+
+/* Modal */
+.modal {
+  z-index: 100;
+}
+.modal-card-head {
+  display: block;
+}
+.modal .modal-card-foot {
+  justify-content: flex-end;
+}
+
+/* Fix for button primary colour. */
+.button.is-primary {
+  background: $primary;
+  &:hover {
+    background: darken($primary, 15%);
+  }
+  &:disabled {
+    background: $grey-light;
+  }
+}
+
+.help {
+  color: $grey;
+}
+
+/* Tags */
+.tag {
+  &.private {
+    background: #fff7e6;
+    color: #fa8c16;
+  }
+  &.public, &.running {
+    background: #e6f7ff;
+    color: #1890ff;
+  }
+  &.finished, &.enabled {
+    background: #f6ffed;
+    color: #52c41a;
+  }
+  &.blacklisted {
+    background: #fff1f0;
+    color: #f5222d;
+  }
+
+  sup {
+    font-weight: $weight-semibold;
+    letter-spacing: 0.03em;
+  }
+  &.unsubscribed sup {
+    color: #fa8c16;
+  }
+  &.confirmed sup {
+    color: #52c41a;
+  }
+  
+  &:not(body) .icon:first-child:last-child {
+    margin-right: 1px;
+  }
+}
+
+/* Lists page */
+.lists {
+  td .tag {
+    min-width: 65px;
+  }
+}
+
+/* Subscribers page */
+.subscribers-controls {
+  padding-bottom: 15px;
+}
+.subscribers-bulk {
+  .actions a {
+    display: inline-block;
+    margin-right: 30px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  /* Hide sidebar menu captions on mobile */
+  .b-sidebar .sidebar-content.is-mini-mobile .menu-list li {
+    margin-bottom: 30px;
+  }
+  .b-sidebar .sidebar-content.is-mini-mobile .menu-list li span:nth-child(2) {
+    display: none;
+  }
+  .b-sidebar .sidebar-content.is-mini-mobile .icon.is-small {
+    scale: 1.4;
+  }
+}
